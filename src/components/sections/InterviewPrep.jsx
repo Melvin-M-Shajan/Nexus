@@ -111,13 +111,10 @@ export default function InterviewPrep() {
                   <p className="rounded-xl border border-[var(--border-subtle)] bg-white/[0.02] p-4 text-sm leading-relaxed text-[var(--text-primary)]/90">{q.a}</p>
                   <div className="grid gap-2 text-xs sm:grid-cols-3">
                     <div className="flex items-start gap-2 text-[var(--text-secondary)]">
-                      <BookMarked size={14} className="mt-0.5 shrink-0 text-[var(--accent-cyan)]" /> <span>Study: {q.study}</span>
+                      <BookMarked size={14} className="mt-0.5 shrink-0 text-[var(--accent-cyan)]" /> <span>Category: {q.study}</span>
                     </div>
                     <div className="flex items-start gap-2 text-[var(--text-secondary)]">
-                      <AlertCircle size={14} className="mt-0.5 shrink-0 text-[var(--accent-red)]" /> <span>Where beginners fail: {q.fail}</span>
-                    </div>
-                    <div className="flex items-start gap-2 text-[var(--text-secondary)]">
-                      <MapPin size={14} className="mt-0.5 shrink-0 text-[var(--accent-gold)]" /> <span>Taught in: {PHASE_LABELS[q.phase] || q.phase}</span>
+                      <AlertCircle size={14} className="mt-0.5 shrink-0 text-[var(--accent-red)]" /> <span>Answer Format: {q.fail}</span>
                     </div>
                   </div>
                 </div>

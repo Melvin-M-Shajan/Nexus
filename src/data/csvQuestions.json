@@ -1,0 +1,487 @@
+[
+  {
+    "id": "background",
+    "name": "Background",
+    "icon": "User",
+    "questions": [
+      {
+        "id": "csv_q_0",
+        "priority": "1",
+        "category": "Resume Walkthrough",
+        "q": "Walk me through your resume / introduce yourself",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Full",
+        "a": "Structure: (1) Current role + core stack in one sentence. (2) The 2-3 most impressive things you built, with a metric or outcome each. (3) Why you're looking now, tied forward to this role. Example: 'I'm a Software Engineer at NCompass Techstudio where I build LangGraph-based HR and Finance AI agents and a CodeWiki-style platform that converts GitHub repos into queryable knowledge graphs using Neo4j. Most recently I built two portfolio projects — a Graph-RAG system that beats flat RAG on multi-hop queries, and a multi-agent orchestration runtime with guardrails and tracing. I'm looking to go deeper into AI engineering specifically, which is why this role caught my attention.' Keep it under 90 seconds."
+      },
+      {
+        "id": "csv_q_1",
+        "priority": "1",
+        "category": "Job Change",
+        "q": "Why are you leaving your current company?",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Full",
+        "a": "Never criticize your employer. Frame as growth-seeking: 'I've learned a lot building AI agent systems at NCompass, but I want to go deeper specifically into AI/LLM engineering as my core specialization, and this role lets me do that full-time rather than as one part of a broader software engineering scope.'"
+      },
+      {
+        "id": "csv_q_2",
+        "priority": "1",
+        "category": "Notice Period",
+        "q": "What's your notice period / when can you join?",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Full",
+        "a": "State plainly with a date: 'I'm currently serving notice, last working day is end of July. I can join in August, so there's no gap.' Never sound apologetic — this is completely normal."
+      },
+      {
+        "id": "csv_q_3",
+        "priority": "1",
+        "category": "Salary",
+        "q": "What are your salary expectations?",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Full",
+        "a": "Anchor on market rate, not current CTC: 'I'm targeting 16-18 LPA based on the scope of this role and current market rates for AI engineering skills.' If pressed on current CTC: state it briefly then redirect immediately back to your target number. Do not volunteer current CTC unprompted."
+      },
+      {
+        "id": "csv_q_41",
+        "priority": "3",
+        "category": "Culture/Founder round",
+        "q": "Why do you want to work at [this specific company]?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Never give a generic answer. Structure: (1) Name something specific about their product/technical approach you find interesting — researched, not generic. (2) Connect it to a specific thing YOU built that's relevant (e.g. for Leena AI: 'I built HR agent workflows at NCompass, and I'm interested in how you handle X specifically for enterprise scale'). (3) State what you want to learn/grow into there. Research each company's blog/product page before this round — generic answers are an instant red flag at founder-stage startups."
+      },
+      {
+        "id": "csv_q_42",
+        "priority": "3",
+        "category": "Weaknesses",
+        "q": "What's a weakness or a project that didn't go well?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Pick something real and specific, not a disguised humblebrag ('I work too hard'). Structure: (1) What happened, honestly. (2) What you learned or changed because of it. (3) Evidence you've actually applied that lesson since. Example direction: an early version of a retrieval pipeline that had poor recall because chunking was too coarse — what you changed and why, tying back to your actual eval-driven iteration process."
+      }
+    ]
+  },
+  {
+    "id": "project_deep_dive",
+    "name": "Project Deep Dive",
+    "icon": "Briefcase",
+    "questions": [
+      {
+        "id": "csv_q_4",
+        "priority": "1",
+        "category": "GraphRAG-Enterprise",
+        "q": "Tell me about a project you're proud of",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Full",
+        "a": "Lead with the problem, not the tech: 'Flat RAG retrieval can't answer questions that require reasoning across relationships — like who reports to the person who approved a budget. I built a Graph-RAG system that combines Neo4j graph traversal with Weaviate vector search, fuses the results, and I benchmarked it against flat RAG using Ragas. It outperforms on multi-hop questions specifically.' Be ready to go deeper on any part if asked."
+      },
+      {
+        "id": "csv_q_5",
+        "priority": "1",
+        "category": "AgentMesh",
+        "q": "Tell me about another project / your agent work",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Full",
+        "a": "'I built a multi-agent orchestration runtime on LangGraph — it handles task routing between agents, shares memory between them via Redis, and has a guardrail layer that intercepts tool calls before execution and blocks anything outside an agent's permitted scope. I also built a monitoring dashboard showing the full call graph and token cost per agent.' This shows production thinking beyond a demo."
+      },
+      {
+        "id": "csv_q_6",
+        "priority": "1",
+        "category": "Challenges",
+        "q": "What was the hardest technical problem you solved in these projects?",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Structure",
+        "a": "Pick ONE specific moment, not a general struggle. Structure: (1) What broke / what was hard, (2) why the obvious fix didn't work, (3) what you actually did, (4) the outcome. Example structure for GraphRAG: fusing graph results and vector results into one ranked list when they use different scoring scales — explain how you normalized/weighted them and why."
+      }
+    ]
+  },
+  {
+    "id": "rag",
+    "name": "RAG",
+    "icon": "Database",
+    "questions": [
+      {
+        "id": "csv_q_7",
+        "priority": "1",
+        "category": "Fundamentals",
+        "q": "What's the difference between RAG and fine-tuning, and when would you choose each?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "RAG: best when knowledge changes frequently, you need source attribution/citations, and you want to avoid retraining costs. Fine-tuning: best when you need the model to learn a new *behavior* or *style*, not new facts — facts go stale in a fine-tuned model and require retraining. In practice: most production systems use RAG for knowledge and fine-tuning (if at all) for tone/format/task-specific behavior. They're complementary, not competing."
+      },
+      {
+        "id": "csv_q_8",
+        "priority": "1",
+        "category": "Fundamentals",
+        "q": "How do you decide chunk size and overlap when building a RAG pipeline?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "Depends on document structure and query type. Smaller chunks (200-400 tokens) give precise retrieval but lose context; larger chunks (800-1500 tokens) preserve context but dilute relevance scoring. Overlap (10-20%) prevents losing information at chunk boundaries. Best practice: chunk by semantic boundary (paragraph/section) rather than fixed token count when possible, and validate empirically against your own eval set rather than using a default blindly — mention you did this in GraphRAG-Enterprise."
+      },
+      {
+        "id": "csv_q_9",
+        "priority": "1",
+        "category": "Failure modes",
+        "q": "What's the problem with naive top-k retrieval, and how does reranking fix it?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "Naive top-k uses a single similarity score (often cosine similarity on embeddings) to pick the k 'closest' chunks — but embedding similarity doesn't always equal relevance to the actual question. Reranking adds a second pass: a cross-encoder or LLM-based reranker scores the initially retrieved candidates against the specific query more precisely, reordering them before they're sent to the generation step. This catches cases where a chunk is topically similar but doesn't actually answer the question."
+      },
+      {
+        "id": "csv_q_13",
+        "priority": "2",
+        "category": "Architecture",
+        "q": "How would you handle a query that needs information from multiple documents?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Structure",
+        "a": "Key points: (1) Retrieve a broader candidate set (higher k) rather than just top-3. (2) Use multi-hop or iterative retrieval — retrieve, check if the answer is complete, retrieve again if not. (3) For structured relationships specifically, a graph-augmented approach (like GraphRAG-Enterprise) handles this better than flat vector search because it can traverse explicit connections rather than relying on semantic similarity alone. Reference your own project as the concrete answer here."
+      },
+      {
+        "id": "csv_q_14",
+        "priority": "2",
+        "category": "Failure modes",
+        "q": "What's the 'lost in the middle' problem and how do you mitigate it?",
+        "tierRelevance": "A,B",
+        "answerType": "Full",
+        "a": "LLMs tend to pay more attention to information at the start and end of a long context than information buried in the middle — so if you stuff 20 retrieved chunks into a prompt, relevant info in chunk 10 may get under-weighted. Mitigations: keep the retrieved context as short/relevant as possible (good reranking matters more than high k), put the most important chunk first or last, or summarize/compress less-relevant context rather than including it verbatim."
+      }
+    ]
+  },
+  {
+    "id": "agents",
+    "name": "Agents",
+    "icon": "Bot",
+    "questions": [
+      {
+        "id": "csv_q_10",
+        "priority": "1",
+        "category": "Fundamentals",
+        "q": "What's the difference between a chain and an agent?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "A chain executes a fixed, predetermined sequence of steps — the path is hardcoded by you. An agent makes decisions at runtime about what to do next, including which tool to call, based on the current state and the LLM's reasoning. LangGraph specifically lets you model this as a graph with conditional edges, so the agent's path through the graph can branch based on intermediate results rather than always running the same sequence."
+      },
+      {
+        "id": "csv_q_11",
+        "priority": "1",
+        "category": "LangGraph",
+        "q": "Explain how LangGraph's state management works, conceptually",
+        "tierRelevance": "S,A,B",
+        "answerType": "Structure",
+        "a": "Key points to hit: (1) State is a shared object (often a TypedDict or Pydantic model) that flows through every node in the graph. (2) Each node receives the current state, does work, and returns an update to it. (3) Conditional edges read the state to decide which node runs next — this is what makes branching/looping possible. (4) Unlike a simple chain, the graph can revisit nodes, which is essential for things like 'retry until this tool call succeeds' or 'keep refining until the answer passes an eval check.' Tie this back to AgentMesh's task router as a real example."
+      },
+      {
+        "id": "csv_q_19",
+        "priority": "2",
+        "category": "Failure handling",
+        "q": "How do you prevent an agent from looping infinitely?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "Set an explicit max iteration/step count as a hard ceiling in the graph. Track state across loop iterations and detect if the agent is repeating the same action without progress (e.g. same tool call with same input twice). Add a 'give up and escalate' path so the agent fails gracefully — returns a partial answer or asks for human help — rather than erroring out or looping silently. Mention you implemented retry limits in AgentMesh's execution engine."
+      },
+      {
+        "id": "csv_q_20",
+        "priority": "2",
+        "category": "Failure handling",
+        "q": "How do you handle an agent that calls the wrong tool?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Structure",
+        "a": "Key points: (1) Good tool descriptions/docstrings reduce this at the source — ambiguous tool names cause ambiguous calls. (2) Validate tool call arguments against a schema (Pydantic) before execution — catch malformed calls before they run. (3) Guardrail layer (as in AgentMesh) can intercept and block out-of-scope calls. (4) Log every tool call with reasoning so you can debug after the fact — this is what your tracing/monitoring dashboard is for."
+      },
+      {
+        "id": "csv_q_21",
+        "priority": "2",
+        "category": "Design",
+        "q": "Walk me through how you'd design an agent that needs to ask a clarifying question before proceeding",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) The agent needs a 'confidence' or 'completeness' check on the incoming request before committing to a tool call. (2) Model this as a conditional edge in LangGraph — if required information is missing, route to a 'clarify' node instead of a 'tool call' node. (3) Persist conversation state so the clarifying question and the user's answer both feed back into the same execution context, not a fresh start. (4) Real example: an HR agent that needs to know WHICH leave policy applies before answering — it should ask for the employee's location/department rather than guessing."
+      },
+      {
+        "id": "csv_q_22",
+        "priority": "2",
+        "category": "LangGraph",
+        "q": "How do you persist state across a multi-turn agent conversation?",
+        "tierRelevance": "S,A",
+        "answerType": "Full",
+        "a": "LangGraph supports checkpointing — state gets saved after each step (commonly to a database like Postgres or in-memory for dev) keyed by a thread/session ID. On the next turn, the graph resumes from the saved state rather than starting fresh. This is what enables an agent to remember earlier parts of a conversation across multiple separate API calls, not just within one execution."
+      },
+      {
+        "id": "csv_q_23",
+        "priority": "2",
+        "category": "LangGraph",
+        "q": "How would you implement human-in-the-loop approval in a LangGraph workflow?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Add an explicit 'pause' node before any high-stakes action (e.g. issuing a refund, approving leave). (2) The graph halts execution and returns a state indicating 'awaiting approval' rather than completing. (3) A separate API call (triggered by a human approving/rejecting) resumes the graph from that checkpoint with the decision injected into state. (4) Mention this is exactly the pattern for any agent making consequential real-world actions — directly relevant to enterprise AI agent companies like Leena AI or Uniphore."
+      }
+    ]
+  },
+  {
+    "id": "coding",
+    "name": "Coding",
+    "icon": "Code",
+    "questions": [
+      {
+        "id": "csv_q_12",
+        "priority": "1",
+        "category": "Live Coding",
+        "q": "Write a function to do X (general DSA prompt during interview)",
+        "tierRelevance": "S,A,B,C",
+        "answerType": "Structure",
+        "a": "This is where your LeetCode prep matters — see the separate LeetCode CSV. General approach for any live coding question: (1) restate the problem out loud to confirm understanding, (2) state your approach and complexity before coding, (3) write clean code with meaningful variable names, (4) test with an example, including an edge case, before declaring done. Interviewers weight communication as heavily as correctness at this level."
+      }
+    ]
+  },
+  {
+    "id": "vector_db",
+    "name": "Vector DB",
+    "icon": "Layers",
+    "questions": [
+      {
+        "id": "csv_q_15",
+        "priority": "2",
+        "category": "Internals",
+        "q": "Explain how HNSW indexing works, conceptually",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) HNSW (Hierarchical Navigable Small World) builds a multi-layer graph where each layer is a sparser version of the one below. (2) Search starts at the top sparse layer and 'zooms in,' descending layers while narrowing toward the nearest neighbors. (3) This makes search approximate but very fast — O(log n) roughly — versus brute-force comparison against every vector. (4) Tradeoff: it's approximate, not exact nearest neighbor, so there's a small recall cost for a large speed gain. You don't need to derive the math, just understand the tradeoff."
+      },
+      {
+        "id": "csv_q_16",
+        "priority": "2",
+        "category": "Tradeoffs",
+        "q": "When would you use a vector DB vs a graph DB vs a relational DB?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "Relational (Postgres): structured data with clear schema and relationships you'll query exactly — transactions, user records, anything needing strong consistency. Vector DB (Weaviate/Pinecone/Qdrant): semantic similarity search over unstructured content — 'find things like this.' Graph DB (Neo4j): when relationships THEMSELVES are the thing you query — multi-hop traversal, 'who connects to whom and how.' In practice, production systems often combine 2-3 of these — exactly what GraphRAG-Enterprise does with Neo4j plus Weaviate."
+      },
+      {
+        "id": "csv_q_38",
+        "priority": "3",
+        "category": "Product specific",
+        "q": "How does [Qdrant/Weaviate/Pinecone]'s architecture differ from a standard database index?",
+        "tierRelevance": "A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Built specifically for approximate nearest neighbor search at scale, not exact-match lookups. (2) Often supports hybrid search (combining vector + keyword/metadata filtering) natively. (3) Mention you've worked hands-on with the specific product if the company makes it — e.g. if interviewing at Qdrant, be ready to discuss what you liked/found limiting about their specific API from building GraphRAG-Enterprise."
+      }
+    ]
+  },
+  {
+    "id": "embeddings",
+    "name": "Embeddings",
+    "icon": "Brain",
+    "questions": [
+      {
+        "id": "csv_q_17",
+        "priority": "2",
+        "category": "Fundamentals",
+        "q": "What does an embedding actually represent?",
+        "tierRelevance": "S,A",
+        "answerType": "Full",
+        "a": "A dense numerical vector that captures semantic meaning, positioned in a high-dimensional space such that semantically similar content ends up close together (by some distance metric like cosine similarity). It's learned, not hand-designed — the embedding model is trained so that 'king' and 'queen' end up closer to each other than 'king' and 'banana,' for example, based on patterns in training data."
+      },
+      {
+        "id": "csv_q_18",
+        "priority": "2",
+        "category": "Evaluation",
+        "q": "How would you evaluate whether your embedding model is 'good' for your use case?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Build a benchmark set of query-document pairs where you know the correct match. (2) Measure retrieval metrics — recall@k, MRR (mean reciprocal rank). (3) Compare against alternative embedding models on the same benchmark. (4) Domain-specific note: general-purpose embeddings can underperform on specialized vocabulary (legal, medical, internal company jargon) — mention this if the company's domain is specialized."
+      }
+    ]
+  },
+  {
+    "id": "prompt_engineering",
+    "name": "Prompt Engineering",
+    "icon": "HelpCircle",
+    "questions": [
+      {
+        "id": "csv_q_24",
+        "priority": "2",
+        "category": "Hallucination",
+        "q": "How do you reduce hallucination in a RAG system through prompting alone?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "Explicitly instruct the model to answer ONLY from provided context and say 'I don't know' if the answer isn't present — don't let it fall back on parametric knowledge. Ask for citations/source attribution inline, which forces the model to ground each claim. Use a low temperature for factual tasks. None of this is a complete fix on its own — pair it with retrieval quality improvements and, ideally, a post-hoc faithfulness check (this is what an eval pipeline like Ragas measures)."
+      },
+      {
+        "id": "csv_q_25",
+        "priority": "2",
+        "category": "Few-shot",
+        "q": "What's few-shot prompting and when does it help vs hurt?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "Few-shot means including example input-output pairs in the prompt to demonstrate the desired format/behavior before the actual task. Helps: when output format is unusual, when you need consistent structure, or the task is ambiguous from instructions alone. Hurts: when examples bias the model toward a narrow pattern instead of generalizing, or when they eat unnecessary context window/cost for a task the model already handles zero-shot."
+      },
+      {
+        "id": "csv_q_26",
+        "priority": "2",
+        "category": "System design",
+        "q": "How do you structure a system prompt for an agent with multiple tools?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Clear role definition up front — what is this agent for, what is it NOT for. (2) Tool descriptions should state exactly when to use each tool, not just what it does — ambiguity here causes wrong tool selection. (3) Explicit constraints/guardrails stated directly (e.g. 'never issue a refund above $X without approval'). (4) Output format expectations if downstream systems parse the response. Mention that AgentMesh's guardrail layer exists partly because prompting alone isn't a reliable enough constraint for high-stakes actions."
+      }
+    ]
+  },
+  {
+    "id": "llm_architecture",
+    "name": "LLM Architecture",
+    "icon": "HelpCircle",
+    "questions": [
+      {
+        "id": "csv_q_27",
+        "priority": "2",
+        "category": "Conceptual",
+        "q": "At a conceptual level, explain what attention does",
+        "tierRelevance": "S,A",
+        "answerType": "Full",
+        "a": "Attention lets the model weigh how much each word/token in the input should influence the representation of every other token, based on learned relevance — rather than processing tokens in strict isolation or fixed order like older architectures (RNNs). This is what allows a transformer to capture long-range dependencies, like connecting a pronoun to the noun it refers to several sentences earlier. You don't need to derive the math (queries/keys/values) unless explicitly asked — the conceptual explanation is usually sufficient for AI Engineer (not ML researcher) roles."
+      },
+      {
+        "id": "csv_q_28",
+        "priority": "2",
+        "category": "Conceptual",
+        "q": "Why do larger context windows not solve the RAG problem entirely?",
+        "tierRelevance": "S,A",
+        "answerType": "Full",
+        "a": "Even with huge context windows, retrieval quality still matters: stuffing irrelevant content into a large context increases cost and latency, can dilute the model's attention (the 'lost in the middle' problem), and doesn't solve the need for source attribution, access control, or up-to-date information. A large context window reduces how aggressively you need to chunk/filter, but doesn't eliminate the need for a retrieval and ranking layer."
+      }
+    ]
+  },
+  {
+    "id": "backend",
+    "name": "Backend",
+    "icon": "HelpCircle",
+    "questions": [
+      {
+        "id": "csv_q_29",
+        "priority": "2",
+        "category": "FastAPI",
+        "q": "How does FastAPI's dependency injection work, and why is it useful?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "You declare a function (a 'dependency') that FastAPI calls automatically before your route handler runs, injecting its return value as a parameter. Useful for shared logic — DB session creation, auth/user extraction from a token, common query param validation — without repeating that code in every route. It also makes testing easier since dependencies can be overridden/mocked cleanly."
+      },
+      {
+        "id": "csv_q_30",
+        "priority": "2",
+        "category": "FastAPI",
+        "q": "Explain async/await in the context of FastAPI — when does it actually help vs do nothing?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "Async helps when your route is I/O-bound — waiting on a database query, an external API call (like an LLM API), or a network request — because the event loop can handle other requests while waiting instead of blocking. It does NOT help for CPU-bound work (heavy computation) — that still blocks the event loop unless offloaded to a separate thread/process. Common mistake: marking a route 'async def' but calling a blocking (non-async) library inside it, which negates the benefit entirely."
+      },
+      {
+        "id": "csv_q_31",
+        "priority": "2",
+        "category": "Database",
+        "q": "What's the N+1 query problem and how do you avoid it?",
+        "tierRelevance": "S,A,B",
+        "answerType": "Full",
+        "a": "It happens when you fetch a list of N records, then run a separate query for each one to get related data — resulting in 1 + N total queries instead of 1 or 2. Fix: use a JOIN to fetch related data in a single query, or batch-load related records with a single 'WHERE id IN (...)' query instead of querying per-record in a loop. ORMs (like SQLAlchemy) have explicit eager-loading options for this."
+      }
+    ]
+  },
+  {
+    "id": "system_design",
+    "name": "System Design",
+    "icon": "HelpCircle",
+    "questions": [
+      {
+        "id": "csv_q_32",
+        "priority": "2",
+        "category": "AI Systems",
+        "q": "Design a RAG system for enterprise documents at scale (millions of documents, multiple departments)",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points to cover: (1) Ingestion pipeline — how documents get chunked, embedded, and indexed, and how this scales horizontally. (2) Multi-tenant isolation — department A's documents must not leak into department B's retrieval results; discuss metadata filtering or separate indexes. (3) Incremental updates — new/changed documents shouldn't require full reindexing. (4) Hybrid search — combining keyword and semantic search for robustness. (5) Cost control at scale — caching repeated queries, routing simple queries to cheaper models. Walk through GraphRAG-Enterprise as a smaller-scale instance of this same architecture."
+      },
+      {
+        "id": "csv_q_33",
+        "priority": "2",
+        "category": "AI Systems",
+        "q": "Design an AI agent for enterprise customer support",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points to cover: (1) Intent classification to route the query. (2) Tool calling for order lookup, refunds, account changes — with RBAC on what the agent can actually execute. (3) Escalation path to a human agent when confidence is low or the action is high-stakes. (4) Conversation memory across the session. (5) Guardrails preventing unauthorized actions (e.g. agent cannot issue a refund without human approval above a threshold). (6) How you'd measure quality over time — this is where mentioning an eval pipeline matters."
+      }
+    ]
+  },
+  {
+    "id": "domain",
+    "name": "Domain",
+    "icon": "HelpCircle",
+    "questions": [
+      {
+        "id": "csv_q_34",
+        "priority": "3",
+        "category": "Enterprise AI",
+        "q": "How would you design a multi-tenant AI agent system where different clients can't see each other's data?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Tenant ID propagated through every layer — request context, retrieval filters, tool execution scope. (2) Separate vector indexes per tenant OR strict metadata filtering enforced at the query layer, never trusted to the LLM itself. (3) Audit logging per tenant for compliance. Relevant specifically for Uniphore, Leena AI, Darwinbox — enterprise B2B companies serving multiple clients."
+      },
+      {
+        "id": "csv_q_35",
+        "priority": "3",
+        "category": "Voice/Conversational AI",
+        "q": "How would latency requirements change your architecture for a voice AI agent vs a text-based one?",
+        "tierRelevance": "A,B",
+        "answerType": "Structure",
+        "a": "Key points: (1) Voice has much tighter latency tolerance — users notice delays over ~300-500ms in a conversation. (2) This pushes toward streaming responses (token-by-token) rather than waiting for full completion. (3) May require smaller/faster models for the first response, with a larger model for complex reasoning in a fallback path. (4) Retrieval needs to be fast too — this is where a well-tuned vector index matters more than raw accuracy. Relevant for Gnani.ai, Agara Labs, Mihup, Krisp."
+      },
+      {
+        "id": "csv_q_36",
+        "priority": "3",
+        "category": "HR Tech",
+        "q": "How would you design role-based access control for an HR AI agent that handles sensitive employee data?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Permissions checked BEFORE the agent's tool call executes, not trusted to the LLM's judgement. (2) Different data visibility based on requester role — an employee can see their own leave balance, a manager can see their team's, HR can see org-wide. (3) PII guardrails specifically blocking salary/personal data from being exposed to the wrong requester, even if asked indirectly. Directly relevant to Leena AI and Darwinbox — reference your NCompass HRMS experience here."
+      },
+      {
+        "id": "csv_q_37",
+        "priority": "3",
+        "category": "Developer Tools / Code AI",
+        "q": "How would you build a system that understands an entire codebase, not just individual files?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Static analysis to build a dependency/call graph (functions, classes, imports) — this is what a Neo4j-based approach gives you over flat embedding search. (2) Chunking strategy matters differently for code than prose — chunk by function/class boundary, not fixed token count. (3) Multi-hop reasoning matters: 'what calls this function' or 'what does this depend on' are graph traversal questions, not similarity search questions. Directly relevant to Sourcegraph, Codeium, Phind — and matches your CodeWiki-style NCompass project."
+      }
+    ]
+  },
+  {
+    "id": "mlops",
+    "name": "MLOps",
+    "icon": "HelpCircle",
+    "questions": [
+      {
+        "id": "csv_q_39",
+        "priority": "3",
+        "category": "Deployment",
+        "q": "How would you deploy and monitor an LLM-based service in production?",
+        "tierRelevance": "S,A",
+        "answerType": "Structure",
+        "a": "Key points: (1) Containerize with Docker for consistent environments. (2) Structured logging with trace IDs so you can follow a single request through the system. (3) Track cost per request (token usage × model pricing) — not just latency/errors. (4) Monitor output quality over time, not just uptime — this is where an eval pipeline running periodically on production samples matters. Reference AgentMesh's monitoring dashboard as a concrete example. Particularly relevant for TrueFoundry, Weights & Biases."
+      }
+    ]
+  },
+  {
+    "id": "eval",
+    "name": "Eval",
+    "icon": "HelpCircle",
+    "questions": [
+      {
+        "id": "csv_q_40",
+        "priority": "3",
+        "category": "Methodology",
+        "q": "How do you evaluate the quality of an LLM application beyond just 'does it work'?",
+        "tierRelevance": "S,A",
+        "answerType": "Full",
+        "a": "Build a benchmark set of representative queries with known-good answers or grading criteria. Use frameworks like Ragas to measure dimensions like faithfulness (is the answer grounded in retrieved context), answer relevance, and context precision/recall. Track these metrics over time as you change prompts or retrieval logic — a metric drop signals a regression before it reaches users. Mention you built exactly this for GraphRAG-Enterprise's benchmark table."
+      }
+    ]
+  }
+]
