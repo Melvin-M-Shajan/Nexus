@@ -21,6 +21,9 @@ import useStore from '../../store/useStore'
 import { useGemini } from '../../hooks/useGemini'
 import { useAI } from '../ui/AIContext'
 import { PRIORITY_META } from '../../data/sharedData'
+import TargetCompanies from './TargetCompanies'
+import ProjectIdeas from './ProjectIdeas'
+import ExecutionRoadmap from './ExecutionRoadmap'
 
 function buildHeatmap(heatmap) {
   // 12 weeks (84 days) ending today, columns = weeks, rows = day of week
@@ -51,6 +54,7 @@ export default function Dashboard() {
 
   const [briefing, setBriefing] = useState('')
   const [briefingLoading, setBriefingLoading] = useState(false)
+  const [activeTab, setActiveTab] = useState('overview')
 
   useEffect(() => setSection('dashboard'), [setSection])
 
@@ -98,7 +102,43 @@ export default function Dashboard() {
 
   return (
     <div className="section-in space-y-5">
-      {/* mission status */}
+      {/* tabs */}
+      <div className="scrollbar-hide flex gap-2 overflow-x-auto pb-1">
+        <button
+          onClick={() => setActiveTab('overview')}
+          className={`shrink-0 rounded-xl border px-4 py-2 text-sm font-medium transition-colors ${
+            activeTab === 'overview'
+              ? 'border-[var(--accent-cyan)]/50 bg-[var(--accent-cyan)]/12 text-[var(--text-primary)]'
+              : 'border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+          }`}
+        >
+          Overview
+        </button>
+        <button
+          onClick={() => setActiveTab('companies')}
+          className={`shrink-0 rounded-xl border px-4 py-2 text-sm font-medium transition-colors ${
+            activeTab === 'companies'
+              ? 'border-[var(--accent-cyan)]/50 bg-[var(--accent-cyan)]/12 text-[var(--text-primary)]'
+              : 'border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+          }`}
+        >
+          Target Companies
+        </button>
+        <button
+          onClick={() => setActiveTab('execution')}
+          className={`shrink-0 rounded-xl border px-4 py-2 text-sm font-medium transition-colors ${
+            activeTab === 'execution'
+              ? 'border-[var(--accent-cyan)]/50 bg-[var(--accent-cyan)]/12 text-[var(--text-primary)]'
+              : 'border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+          }`}
+        >
+          Projects & Execution
+        </button>
+      </div>
+
+      {activeTab === 'overview' ? (
+        <>
+          {/* mission status */}
       <GlassCard className="overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 p-5">
           <div>
@@ -265,6 +305,21 @@ export default function Dashboard() {
           </ul>
         </GlassCard>
       </div>
+        </>
+      ) : activeTab === 'companies' ? (
+        <div className="animate-in fade-in duration-300">
+          {/* Target Companies (Section 1) */}
+          <TargetCompanies />
+        </div>
+      ) : (
+        <div className="space-y-5 animate-in fade-in duration-300">
+          {/* Portfolio Project Ideas (Section 2) */}
+          <ProjectIdeas />
+
+          {/* 60-Day Execution Roadmap (Section 3) */}
+          <ExecutionRoadmap />
+        </div>
+      )}
     </div>
   )
 }
